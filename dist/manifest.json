@@ -1,0 +1,12 @@
+{
+
+  "manifest_version": 2,
+  "name": "Video Playback Speed Extension",
+  "version": "1.0",
+  "description": "Controls playback rate of currently playing video",
+  "icons": {
+  },
+  "content_scripts": [
+  ]
+
+}
