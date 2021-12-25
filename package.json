@@ -1,0 +1,19 @@
+{
+  "name": "video-speed-extension",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Extension to control video playback rate",
+  "scripts": {
+    "build": "npx tsc --outDir dist",
+    "dev": "npx tsc --outDir dist --watch",
+    "ext": "cd dist && npx web-ext run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastiansandqvist/video-speed-extension.git"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chrome": "0.0.172"
+  }
+}
