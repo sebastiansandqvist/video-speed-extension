@@ -1,14 +1,30 @@
 "use strict";
-const speeds = [0.25, 0.5, 1, 1.25, 1.5, 2, 2.5, 3, 5, 10];
-async function setPlaybackSpeed() {
+const elements = {
+    speeds: document.getElementById('speeds'),
+    replay: document.getElementById('replay'),
+    forward: document.getElementById('forward')
+};
+function setPlaybackSpeed() {
     chrome.storage.sync.get('speed', ({ speed }) => {
-        console.log('setting playback speed', speed);
         const videos = Array.from(document.getElementsByTagName('video'));
         for (const video of videos) {
             video.playbackRate = speed;
         }
     });
 }
+function goBack15() {
+    const videos = Array.from(document.getElementsByTagName('video'));
+    for (const video of videos) {
+        video.currentTime = video.currentTime - 15; // in seconds
+    }
+}
+function goForward15() {
+    const videos = Array.from(document.getElementsByTagName('video'));
+    for (const video of videos) {
+        video.currentTime = video.currentTime + 15;
+    }
+}
+const speeds = [0.25, 0.5, 1, 1.25, 1.5, 2, 2.5, 3, 5, 10];
 const buttons = speeds.map((speed) => {
     const button = document.createElement('button');
     button.textContent = String(speed);
@@ -25,5 +41,23 @@ const buttons = speeds.map((speed) => {
     return button;
 });
 for (const button of buttons) {
-    document.body.appendChild(button);
+    elements.speeds.appendChild(button);
 }
+elements.replay.onclick = async () => {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (tab?.id) {
+        chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: goBack15
+        });
+    }
+};
+elements.forward.onclick = async () => {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (tab?.id) {
+        chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: goForward15
+        });
+    }
+};

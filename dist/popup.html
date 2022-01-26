@@ -3,14 +3,52 @@
   <head>
     <style>
       body {
-        width: 270px;
+        margin: 0;
+        padding: 8px;
+        width: 382px;
       }
+
       button {
+        color: #222;
+        font: 500 12px/1 'Open Sans', sans-serif;
+        padding: 4px 8px;
         width: 50px;
       }
+
+      .flex {
+        display: flex;
+      }
+
+      .grid {
+        display: grid;
+      }
+
+      .grid-5 {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      }
+
+      .gap-1 {
+        gap: 4px;
+      }
+
+      .gap-2 {
+        gap: 8px;
+      }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
   </head>
   <body>
+    <main class="flex gap-2">
+      <button id="replay">
+        <img src="/images/replay.svg" height="32" width="32" />
+      </button>
+      <div id="speeds" class="grid grid-5 gap-1"></div>
+      <button id="forward">
+        <img src="/images/forward.svg" height="32" width="32" />
+      </button>
+    </main>
     <script src="popup.js"></script>
   </body>
 </html>

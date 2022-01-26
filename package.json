@@ -1,7 +1,7 @@
 {
   "name": "video-speed-extension",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Extension to control video playback rate",
   "scripts": {
     "build": "npx tsc --outDir dist",
