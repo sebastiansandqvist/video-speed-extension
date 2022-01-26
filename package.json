@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npx tsc --outDir dist",
     "dev": "npx tsc --outDir dist --watch",
-    "ext": "cd dist && npx web-ext run"
+    "ext": "cd dist && npx web-ext run",
+    "zip": "zip Speeeed.zip -r dist"
   },
   "repository": {
     "type": "git",
